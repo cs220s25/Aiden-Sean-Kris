@@ -15,7 +15,7 @@ Dynamic Betting System: Place bets, track your balance, and compete with friends
 Personalized Game Interactions: Playful Gojo-themed messages add humor to the gaming experience
 
 ## System Diagram
-![DiscordUML.png](../../../Downloads/DiscordUML.png)
+![UML Diagram]![DiscordUML.png](src/main/java/DiscordUML.png)
 
 The system diagram illustrates the key components of the Blackjack bot:
 
