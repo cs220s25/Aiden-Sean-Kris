@@ -1,3 +1,9 @@
+/**
+ * DatabaseManager.java
+ * This class manages the connection to the MySQL database for the Blackjack game.
+ * It handles player data, including adding players, updating balances, and retrieving leaderboards.
+ *
+ */
 package edu.moravian;
 
 import java.util.AbstractMap;
@@ -14,6 +20,9 @@ public class DatabaseManager {
 
     private Connection connection;
 
+    /**
+     * Constructor to initialize the database connection.
+     */
     public DatabaseManager() {
         try {
             // Connect to MySQL database
@@ -23,6 +32,9 @@ public class DatabaseManager {
             e.printStackTrace();
         }
     }
+    /**
+     * Method to create the players table if it doesn't exist.
+     */
     public List<Map.Entry<String, Integer>> getLeaderboard() {
         List<Map.Entry<String, Integer>> leaderboard = new ArrayList<>();
         String query = "SELECT name, balance FROM players ORDER BY balance DESC";
@@ -43,6 +55,9 @@ public class DatabaseManager {
     }
 
 
+    /**
+     * Method that adds a new player to the database if they don't already exist.
+     */
     // Add a new player to the database (if not already existing)
     public void addPlayer(String name, int defaultBalance) {
         String checkQuery = "SELECT COUNT(*) FROM players WHERE name = ?";
@@ -63,6 +78,12 @@ public class DatabaseManager {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Method to retrieve the balance of a player from the database.
+     * @param name
+     * @return
+     */
 
     // Retrieve the balance of a player from the database if they are at 0 coins, delete them
     public int getPlayerBalance(String name) {
@@ -93,6 +114,11 @@ public class DatabaseManager {
             e.printStackTrace();
         }
     }
+    /**
+     * Method to check if a player exists in the database.
+     * @param username
+     * @return
+     */
 
     public boolean playerExists(String username) {
         String query = "SELECT COUNT(*) FROM players WHERE name = ?";
@@ -107,6 +133,13 @@ public class DatabaseManager {
         }
         return false;
     }
+    /**
+     * Method to update the player's balance in the database.
+     * @param username
+     * @param adjustment
+     * @param reason
+     * @return
+     */
 
     public int updateCurrency(String username, int adjustment, String reason) {
         try {
@@ -131,7 +164,11 @@ public class DatabaseManager {
         }
         return -1; // Indicate error
     }
-// if the player has a balance of 0, delete them from the database
+
+    /**
+     * Method to delete a player from the database if their balance is 0.
+     * @param username
+     */
 private void deletePlayer(String username) {
     String query = "DELETE FROM players WHERE name = ?";
     try (PreparedStatement stmt = connection.prepareStatement(query)) {
@@ -142,6 +179,11 @@ private void deletePlayer(String username) {
         e.printStackTrace();
     }
 }
+    /**
+     * Method to give currency to a player.(Admin command)
+     * @param username
+     * @param i
+     */
     public void giveCurrency(String username, int i) {
         try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD)) {
             String query = "UPDATE players SET balance = balance + ? WHERE name = ?";

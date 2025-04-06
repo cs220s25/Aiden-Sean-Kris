@@ -1,3 +1,8 @@
+/**
+ * MultiplayerBlackjackBot.java
+ * this is the main class for the Multiplayer Blackjack Discord bot.
+ * It initializes the bot, sets up the game sessions, and handles incoming messages.
+ */
 package edu.moravian;
 
 import io.github.cdimascio.dotenv.Dotenv;
@@ -20,6 +25,9 @@ public class MultiplayerBlackjackBot extends ListenerAdapter {
     private final Stack<String> deck = new Stack<>();
     private final DiscordMessageHandler messageHandler;
 
+    /**
+     * Constructor to initialize the bot and set up the game sessions.
+     */
     public MultiplayerBlackjackBot() {
         DatabaseManager databaseManager = new DatabaseManager();
         messageHandler = new DiscordMessageHandler(databaseManager, games, deck);
@@ -31,6 +39,9 @@ public class MultiplayerBlackjackBot extends ListenerAdapter {
 
         shuffleDeck();
     }
+    /**
+     * Shuffles the deck of cards for the game.
+     */
 
     private void shuffleDeck() {
         String[] suits = {"♠", "♦", "♣", "♥"};
@@ -43,11 +54,19 @@ public class MultiplayerBlackjackBot extends ListenerAdapter {
         }
         Collections.shuffle(deck);
     }
+    /**
+     * Handles incoming messages and delegates them to the message handler.
+     * @param event The message received event.
+     */
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
         messageHandler.handleCommand(event);
     }
+    /**
+     * Main method to start the bot.
+     * @param args Command line arguments.
+     */
 
     public static void main(String[] args) {
         new MultiplayerBlackjackBot();

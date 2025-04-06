@@ -1,3 +1,9 @@
+/**
+ * DiscordMessageHandler.java
+ * this class handles the messages received from the Discord bot
+ * it processes the commands and interacts with the game session
+ * and the database.
+ */
 package edu.moravian;
 
 import net.dv8tion.jda.api.EmbedBuilder;
@@ -8,16 +14,30 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
+
 public class DiscordMessageHandler {
     private final DatabaseManager databaseManager;
     private final Map<String, GameSession> games;
     private final Stack<String> deck;
 
+    /**
+     * Constructor for DiscordMessageHandler
+     * this constructor initializes the database manager, games map and deck
+     * @param databaseManager
+     * @param games
+     * @param deck
+     */
     public DiscordMessageHandler(DatabaseManager databaseManager, Map<String, GameSession> games, Stack<String> deck) {
         this.databaseManager = databaseManager;
         this.games = games;
         this.deck = deck;
     }
+    /**
+     * This method handles the commands received from the Discord bot
+     * it processes the commands and interacts with the game session
+     * and the database.
+     * @param event
+     */
 
     public void handleCommand(MessageReceivedEvent event) {
         String message = event.getMessage().getContentRaw().toLowerCase();
@@ -57,7 +77,13 @@ public class DiscordMessageHandler {
             ).queue();
         }
     }
-
+    /**
+     * This method handles the leave command
+     * it removes the player from the game session
+     * @param channelId
+     * @param username
+     * @param event
+     */
 
 
     private void leaveGame(String channelId, String username, MessageReceivedEvent event) {
@@ -73,6 +99,12 @@ public class DiscordMessageHandler {
             event.getChannel().sendMessage("You are not in the game.").queue();
         }
     }
+    /**
+     * This method checks the balance of the player
+     * it retrieves the balance from the database and sends it to the player
+     * @param username
+     * @param event
+     */
 
     private void checkBalance(String username, MessageReceivedEvent event) {
         try {
@@ -84,6 +116,14 @@ public class DiscordMessageHandler {
             e.printStackTrace();
         }
     }
+    /**
+     * This method starts a new game session
+     * it adds the player to the database if not already added
+     * and starts a new game session
+     * @param channelId
+     * @param username
+     * @param event
+     */
 
     private void startGame(String channelId, String username, MessageReceivedEvent event) {
         // Add player to the database if not already added
@@ -102,6 +142,13 @@ public class DiscordMessageHandler {
                     username + ", you're in! Don't forget to bet (`!bet [amount]`) if you wanna test your luck against the *strongest* dealer.").queue();
         }
     }
+    /**
+     * This method handles the join command
+     * it adds the player to the game session
+     * @param channelId
+     * @param username
+     * @param event
+     */
 
     private void joinGame(String channelId, String username, MessageReceivedEvent event) {
         if (!databaseManager.playerExists(username)) {
@@ -123,6 +170,13 @@ public class DiscordMessageHandler {
             event.getChannel().sendMessage("You are already in the game or the game is full.").queue();
         }
     }
+    /**
+     * This method handles the hit command
+     * it adds a card to the player's hand
+     * @param channelId
+     * @param username
+     * @param event
+     */
 
     private void hit(String channelId, String username, MessageReceivedEvent event) {
         GameSession game = games.get(channelId);
@@ -155,6 +209,13 @@ public class DiscordMessageHandler {
             event.getChannel().sendMessageEmbeds(buildEmbed(username + " drew a card.", game)).queue();
         }
     }
+    /**
+     * This method handles the stand command
+     * it ends the player's turn and moves to the next player
+     * @param channelId
+     * @param username
+     * @param event
+     */
 
     private void stand(String channelId, String username, MessageReceivedEvent event) {
         GameSession game = games.get(channelId);
@@ -185,6 +246,12 @@ public class DiscordMessageHandler {
             finishGame(channelId, event);
         }
     }
+    /**
+     * This method handles the finish game command
+     * it plays the dealer's turn and calculates the outcomes
+     * @param channelId
+     * @param event
+     */
 
 
     private void finishGame(String channelId, MessageReceivedEvent event) {
@@ -222,10 +289,23 @@ public class DiscordMessageHandler {
 
         games.remove(channelId);
     }
+    /**
+     * This method builds the embed message for the game session
+     * @param title
+     * @param game
+     * @return
+     */
 
     private MessageEmbed buildEmbed(String title, GameSession game) {
         return buildEmbed(title, game, 0x000000);  // Default to black color
     }
+    /**
+     * This method builds the embed message for the game session
+     * @param title
+     * @param game
+     * @param color
+     * @return
+     */
 
     private MessageEmbed buildEmbed(String title, GameSession game, int color) {
         EmbedBuilder embed = new EmbedBuilder();
@@ -238,6 +318,11 @@ public class DiscordMessageHandler {
         embed.setColor(color);
         return embed.build();
     }
+    /**
+     * This method shows the leaderboard
+     * it retrieves the leaderboard from the database and sends it to the player
+     * @param event
+     */
     private void showLeaderboard(MessageReceivedEvent event) {
         List<Map.Entry<String, Integer>> leaderboard = databaseManager.getLeaderboard();
 
@@ -275,6 +360,14 @@ public class DiscordMessageHandler {
         event.getChannel().sendMessage("**Behold! The coin hierarchy of my domain!**").queue();
         event.getChannel().sendMessageEmbeds(embed.build()).queue();
     }
+    /**
+     * This method handles the bet command
+     * it sets the bet amount for the player
+     * @param channelId
+     * @param username
+     * @param event
+     * @param message
+     */
 
     private void handleBet(String channelId, String username, MessageReceivedEvent event, String message) {
         // Extract bet amount from the message (example: "!bet 10")
