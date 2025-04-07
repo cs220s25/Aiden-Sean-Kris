@@ -30,8 +30,8 @@ public class MultiplayerBlackjackBot extends ListenerAdapter {
      */
     public MultiplayerBlackjackBot() {
         DatabaseManager databaseManager = new DatabaseManager();
-        databaseManager.createdumpfile();
         databaseManager.createDatabaseIfNotExists();
+        databaseManager.createdumpfile();
         databaseManager.importDumpFile();
         messageHandler = new DiscordMessageHandler(databaseManager, games, deck);
 
