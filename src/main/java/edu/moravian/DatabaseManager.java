@@ -6,6 +6,7 @@
  */
 package edu.moravian;
 
+import java.io.*;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.List;
@@ -81,52 +82,103 @@ public class DatabaseManager {
         }
     }
     /**
-     * Creates a database dump file for backup purposes using mysqldump utility.
+     * Creates a database dump file using JDBC instead of mysqldump
      * @return true if dump was created successfully, false otherwise
      */
     public boolean createdumpfile() {
-        try {
-            // Create timestamp for unique filename
-            String timestamp = new java.text.SimpleDateFormat("yyyyMMdd_HHmmss").format(new java.util.Date());
-            String dumpFileName = "blackjack_backup_" + timestamp + ".sql";
+        String dumpFileName = "blackjackdump.sql";
+        String dumpFilePath = System.getProperty("user.dir") + File.separator + dumpFileName;
 
-            // Dump file path in current directory
-            String dumpFilePath = System.getProperty("user.dir") + java.io.File.separator + dumpFileName;
+        try (FileWriter writer = new FileWriter(dumpFilePath)) {
+            // Write header
+            writer.write("-- Blackjack Database Dump\n");
+            writer.write("-- Generated: " + new java.util.Date() + "\n\n");
+            writer.write("USE blackjack;\n\n");
 
-            // Build mysqldump command
-            ProcessBuilder processBuilder = new ProcessBuilder(
-                    "mysqldump",
-                    "--user=" + USER,
-                    "--password=" + PASSWORD,
-                    "--host=localhost",
-                    "--port=3306",
-                    "--add-drop-database",
-                    "--databases", "blackjack",
-                    "--result-file=" + dumpFilePath
-            );
+            // Export players table structure
+            writer.write("DROP TABLE IF EXISTS players;\n");
+            writer.write("CREATE TABLE players (\n");
+            writer.write("  id INT AUTO_INCREMENT PRIMARY KEY,\n");
+            writer.write("  name VARCHAR(255) NOT NULL UNIQUE,\n");
+            writer.write("  balance INT NOT NULL DEFAULT 40\n");
+            writer.write(");\n\n");
 
-            processBuilder.redirectErrorStream(true);
-            Process process = processBuilder.start();
+            // Export player data
+            String query = "SELECT * FROM players";
+            try (Statement stmt = connection.createStatement();
+                 ResultSet rs = stmt.executeQuery(query)) {
 
-            // Wait for the process to complete
-            int exitCode = process.waitFor();
+                while (rs.next()) {
+                    int id = rs.getInt("id");
+                    String name = rs.getString("name").replace("'", "''"); // Escape quotes
+                    int balance = rs.getInt("balance");
 
-            if (exitCode == 0) {
-                System.out.println("Database dump created successfully at: " + dumpFilePath);
-                return true;
-            } else {
-                System.err.println("Error creating database dump. Exit code: " + exitCode);
-                try (java.io.BufferedReader reader = new java.io.BufferedReader(
-                        new java.io.InputStreamReader(process.getInputStream()))) {
-                    String line;
-                    while ((line = reader.readLine()) != null) {
-                        System.err.println(line);
-                    }
+                    writer.write(String.format("INSERT INTO players (id, name, balance) VALUES (%d, '%s', %d);\n",
+                            id, name, balance));
                 }
-                return false;
             }
+
+            System.out.println("Database dump created successfully at: " + dumpFilePath);
+            return true;
         } catch (Exception e) {
             System.err.println("Exception creating database dump:");
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * Imports the database from the dump file if it exists
+     * @return true if import was successful, false otherwise
+     */
+    public boolean importDumpFile() {
+        String dumpFileName = "blackjackdump.sql";
+        String dumpFilePath = System.getProperty("user.dir") + File.separator + dumpFileName;
+
+        // Check if dump file exists
+        File dumpFile = new File(dumpFilePath);
+        if (!dumpFile.exists()) {
+            System.out.println("No dump file found at: " + dumpFilePath);
+            return false;
+        }
+
+        try {
+            // Read SQL statements from file
+            List<String> sqlStatements = new ArrayList<>();
+            StringBuilder statement = new StringBuilder();
+
+            try (BufferedReader reader = new BufferedReader(new FileReader(dumpFile))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    // Skip comments and empty lines
+                    if (line.startsWith("--") || line.trim().isEmpty()) {
+                        continue;
+                    }
+
+                    statement.append(line);
+
+                    // If statement complete
+                    if (line.trim().endsWith(";")) {
+                        sqlStatements.add(statement.toString());
+                        statement = new StringBuilder();
+                    }
+                }
+            }
+
+            // Execute SQL statements
+            try (Statement stmt = connection.createStatement()) {
+                for (String sql : sqlStatements) {
+                    // Skip USE statements as we're already connected
+                    if (!sql.trim().toUpperCase().startsWith("USE")) {
+                        stmt.execute(sql);
+                    }
+                }
+            }
+
+            System.out.println("Database imported successfully from: " + dumpFilePath);
+            return true;
+        } catch (Exception e) {
+            System.err.println("Exception importing database dump:");
             e.printStackTrace();
             return false;
         }
