@@ -41,6 +41,13 @@ public class MultiplayerBlackjackBot extends ListenerAdapter {
         api.addEventListener(this);
 
         shuffleDeck();
+
+        // Add this to your main class constructor or initialization method
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            System.out.println("Application shutting down, updating database dump...");
+            databaseManager.updatedumpfile();
+            databaseManager.close();
+        }));
     }
     /**
      * Shuffles the deck of cards for the game.

@@ -184,6 +184,14 @@ public class DatabaseManager {
         }
     }
     /**
+     * Updates the dump file with the current database state.
+     * This method can be called explicitly or automatically on program shutdown.
+     * @return true if dump was updated successfully, false otherwise
+     */
+    public boolean updatedumpfile() {
+        return createdumpfile(); // Reuse the existing dump functionality
+    }
+    /**
      * Method to create the players table if it doesn't exist.
      */
     public List<Map.Entry<String, Integer>> getLeaderboard() {
