@@ -33,6 +33,105 @@ public class DatabaseManager {
         }
     }
     /**
+     * Creates the blackjack database and required tables if they don't already exist.
+     * @return true if successful, false if an error occurred
+     */
+    public boolean createDatabaseIfNotExists() {
+        String baseUrl = "jdbc:mysql://localhost:3306/";
+
+        try (Connection conn = DriverManager.getConnection(baseUrl, USER, PASSWORD)) {
+            // Check if database exists
+            boolean databaseExists = false;
+            try (ResultSet resultSet = conn.getMetaData().getCatalogs()) {
+                while (resultSet.next()) {
+                    String databaseName = resultSet.getString(1);
+                    if ("blackjack".equalsIgnoreCase(databaseName)) {
+                        databaseExists = true;
+                        break;
+                    }
+                }
+            }
+
+            // Create database if it doesn't exist
+            if (!databaseExists) {
+                try (Statement stmt = conn.createStatement()) {
+                    stmt.executeUpdate("CREATE DATABASE blackjack");
+                    System.out.println("Database 'blackjack' created successfully.");
+                }
+            }
+
+            // Connect to the blackjack database to create tables if needed
+            try (Connection dbConn = DriverManager.getConnection(URL, USER, PASSWORD);
+                 Statement stmt = dbConn.createStatement()) {
+
+                // Create players table if it doesn't exist
+                String createPlayersTable = "CREATE TABLE IF NOT EXISTS players (" +
+                        "id INT AUTO_INCREMENT PRIMARY KEY," +
+                        "name VARCHAR(255) NOT NULL UNIQUE," +
+                        "balance INT NOT NULL DEFAULT 40)";
+                stmt.executeUpdate(createPlayersTable);
+                System.out.println("Table 'players' checked/created successfully.");
+
+                return true;
+            }
+        } catch (SQLException e) {
+            System.err.println("Error creating database or tables:");
+            e.printStackTrace();
+            return false;
+        }
+    }
+    /**
+     * Creates a database dump file for backup purposes using mysqldump utility.
+     * @return true if dump was created successfully, false otherwise
+     */
+    public boolean createdumpfile() {
+        try {
+            // Create timestamp for unique filename
+            String timestamp = new java.text.SimpleDateFormat("yyyyMMdd_HHmmss").format(new java.util.Date());
+            String dumpFileName = "blackjack_backup_" + timestamp + ".sql";
+
+            // Dump file path in current directory
+            String dumpFilePath = System.getProperty("user.dir") + java.io.File.separator + dumpFileName;
+
+            // Build mysqldump command
+            ProcessBuilder processBuilder = new ProcessBuilder(
+                    "mysqldump",
+                    "--user=" + USER,
+                    "--password=" + PASSWORD,
+                    "--host=localhost",
+                    "--port=3306",
+                    "--add-drop-database",
+                    "--databases", "blackjack",
+                    "--result-file=" + dumpFilePath
+            );
+
+            processBuilder.redirectErrorStream(true);
+            Process process = processBuilder.start();
+
+            // Wait for the process to complete
+            int exitCode = process.waitFor();
+
+            if (exitCode == 0) {
+                System.out.println("Database dump created successfully at: " + dumpFilePath);
+                return true;
+            } else {
+                System.err.println("Error creating database dump. Exit code: " + exitCode);
+                try (java.io.BufferedReader reader = new java.io.BufferedReader(
+                        new java.io.InputStreamReader(process.getInputStream()))) {
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        System.err.println(line);
+                    }
+                }
+                return false;
+            }
+        } catch (Exception e) {
+            System.err.println("Exception creating database dump:");
+            e.printStackTrace();
+            return false;
+        }
+    }
+    /**
      * Method to create the players table if it doesn't exist.
      */
     public List<Map.Entry<String, Integer>> getLeaderboard() {
