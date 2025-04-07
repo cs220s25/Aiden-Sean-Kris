@@ -1,5 +1,5 @@
 -- Blackjack Database Dump
--- Generated: Mon Apr 07 14:10:44 EDT 2025
+-- Generated: Mon Apr 07 14:16:16 EDT 2025
 
 USE blackjack;
 
@@ -10,7 +10,7 @@ CREATE TABLE players (
   balance INT NOT NULL DEFAULT 40
 );
 
-INSERT INTO players (id, name, balance) VALUES (2, 'subarashi42', 120);
+INSERT INTO players (id, name, balance) VALUES (2, 'subarashi42', 340);
 INSERT INTO players (id, name, balance) VALUES (7, 'FirstPlayer1743854874518', 40);
 INSERT INTO players (id, name, balance) VALUES (8, 'SecondPlayer1743854874518', 40);
 INSERT INTO players (id, name, balance) VALUES (9, 'TestUser1743854874582', 40);
