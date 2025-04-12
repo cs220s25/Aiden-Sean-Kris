@@ -21,13 +21,14 @@ public class DiscordMessageHandlerTest {
 
         // Create a deck with known cards
         deck = new Stack<>();
-        deck.push("A♠");
-        deck.push("K♥");
-        deck.push("Q♦");
-        deck.push("10♣");
-        deck.push("9♥");
-        deck.push("8♦");
-
+        String[] suits = {"♠", "♥", "♦", "♣"};
+        String[] ranks = {"A", "K", "Q", "J", "10", "9", "8", "7", "6", "5", "4", "3", "2"};
+        for (String suit : suits) {
+            for (String rank : ranks) {
+                deck.push(rank + suit);
+            }
+        }
+        
         // Initialize messageHandler with the test setup
         messageHandler = new DiscordMessageHandler(databaseManager, games, deck);
     }
@@ -90,8 +91,7 @@ public class DiscordMessageHandlerTest {
         for (int i = 2; i <= 8; i++) {
             String playerName = "Player" + i + System.currentTimeMillis();
             databaseManager.addPlayer(playerName, 40);
-            assertTrue(game.addPlayer(playerName, deck),
-                    "Player " + i + " should be able to join");
+            assertTrue(game.addPlayer(playerName, deck), "Player " + i + " should be able to join");
         }
 
         // Try to add a 9th player

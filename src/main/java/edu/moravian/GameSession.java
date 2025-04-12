@@ -51,7 +51,7 @@ public class GameSession {
      * @param deck The stack of cards to be used in the game.
      * @return true if the player was added successfully, false otherwise.
      */
-
+    
     public boolean addPlayer(String username, Stack<String> deck) {
         if (players.size() >= 8) return false; // Maximum of 8 players
         if (players.stream().anyMatch(player -> player.getName().equals(username))) return false;
@@ -244,3 +244,4 @@ public class GameSession {
         return players.removeIf(player -> player.getName().equals(username));
     }
 }
+
