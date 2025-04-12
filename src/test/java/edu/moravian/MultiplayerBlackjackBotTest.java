@@ -1,4 +1,5 @@
 package edu.moravian;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,34 +16,32 @@ public class MultiplayerBlackjackBotTest {
         bot = new MultiplayerBlackjackBot();
     }
 
-    // @Test
-    // void testShuffleDeck() throws Exception {
-    //     // Use reflection to access the private shuffleDeck method
-    //     Method shuffleDeckMethod = MultiplayerBlackjackBot.class.getDeclaredMethod("shuffleDeck");
-    //     shuffleDeckMethod.setAccessible(true);
+    @Test
+    @SuppressWarnings("unchecked")
+    void testShuffleDeck() throws Exception {
+        // Use reflection to access the private shuffleDeck method
+        Method shuffleDeckMethod = MultiplayerBlackjackBot.class.getDeclaredMethod("shuffleDeck");
+        shuffleDeckMethod.trySetAccessible();
 
-    //     // Get the deck before shuffling
-    //     Field getDeckMethod = MultiplayerBlackjackBot.class.getDeclaredField("deck");
-    //     getDeckMethod.setAccessible(true);
+        // Access the private deck field
+        Field deckField = MultiplayerBlackjackBot.class.getDeclaredField("deck");
+        deckField.trySetAccessible();
 
-    //     Stack<String> originalDeck = (Stack<String>) getDeckMethod.get(bot);
-    //     Stack<String> originalDeckShuffled = (Stack<String>) originalDeck.clone();
-    //     int originalSize = originalDeck.size();
+        // Get the original deck
+        Stack<String> originalDeck = (Stack<String>) deckField.get(bot);
+        Stack<String> originalDeckCopy = (Stack<String>) originalDeck.clone();
 
-    //     // Shuffle the deck
-    //     shuffleDeckMethod.invoke(bot);
+        // Shuffle the deck
+        shuffleDeckMethod.invoke(bot);
 
-    //     // Check if the deck size remains the same
-    //     assertEquals(originalSize, originalDeckShuffled.size());
-
-    //     // Check that the deck is not in the original order (probability-based)
-    //     boolean isDifferent = false;
-    //     for (int i = 0; i < 5; i++) {
-    //         if (!originalDeck.get(i).equals(originalDeckShuffled.get(i))) {
-    //             isDifferent = true;
-    //             break;
-    //         }
-    //     }
-    //     assertTrue(isDifferent);
-    // }
+        // Verify the deck order has changed (probabilistic check)
+        boolean isDifferent = false;
+        for (int i = 0; i < originalDeck.size(); i++) {
+            if (!originalDeck.get(i).equals(originalDeckCopy.get(i))) {
+                isDifferent = true;
+                break;
+            }
+        }
+        assertTrue(isDifferent, "The deck order should be different after shuffling.");
+    }
 }
