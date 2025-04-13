@@ -21,9 +21,6 @@ jobs:
           --health-interval=10s
           --health-timeout=5s
           --health-retries=5
-    env:
-      DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }} 
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -36,6 +33,9 @@ jobs:
 
     - name: Wait for MySQL to be ready
       run: sleep 20
+
+    - name: Add .env file
+      run: echo "DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }}" > .env
 
     - name: Run Maven package
       run: mvn clean package
