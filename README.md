@@ -37,7 +37,7 @@ sudo mysql_secure_installation
 
 1. When it prompts you asking for a password press enter
 2. Press & enter “y” for everything else it asks you
-3. When it asks you to put in a new password type in “rootpass”
+3. When it asks you to put in a new password type in desired passsword.
 
 
 Clone project
