@@ -21,16 +21,16 @@ Personalized Game Interactions: Playful Gojo-themed messages add humor to the ga
 
 ## Manual Setup
 
-# Create EC2 Instance and SSH into it
+Create EC2 Instance and SSH into it
 ssh -i /path/to/labuser.pem ec2-user@your-ec2-public-ip
 
 
-# Install system dependencies
+Install system dependencies
 sudo yum install -y git
 sudo yum install -y maven-amazon-corretto21
 sudo dnf install -y mariadb105 mariadb105-server expect
 
-# Start and enable MariaDB
+Start and enable MariaDB
 sudo systemctl start mariadb
 sudo systemctl enable mariadb
 sudo mysql_secure_installation
@@ -40,20 +40,20 @@ sudo mysql_secure_installation
 3. When it asks you to put in a new password type in “rootpass”
 
 
-# Clone project
+Clone project
 git clone https://github.com/cs220s25/Aiden-Sean-Kris.git
 
-# Change Directory 
+Change Directory 
 cd Aiden-Sean-Kris
 
-# Create the .env file with your Discord token
+Create the .env file with your Discord token
 nano .env 
 Type in “DISCORD_TOKEN=YOUR_DISCORD_TOKEN_HERE”
 
-# Build the project
+Build the project
 mvn clean package
 
-# Install and start the systemd service
+Install and start the systemd service
 sudo cp Blackjackbot.service /etc/systemd/system
 sudo systemctl daemon-reload
 sudo systemctl enable Blackjackbot.service
