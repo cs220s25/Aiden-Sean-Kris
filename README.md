@@ -1,3 +1,8 @@
+## ActionsExploration
+
+### CI Status
+
+![Testing](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/maven-build.yml/badge.svg)
 
 ## Project Description
 
