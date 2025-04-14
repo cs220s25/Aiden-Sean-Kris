@@ -11,13 +11,13 @@ Project Description:
 
 Gojo's Ultimate Blackjack Arena is a multiplayer Blackjack Discord bot that has all the same functionalities of a regular blackjack game. Inspired by the charismatic Jujutsu Kaisen character Gojo Satoru, this bot offers an engaging, interactive Blackjack experience with unique features:
 
-Multiplayer Gameplay: Up to 8 players can join a single game session
+-Multiplayer Gameplay: Up to 8 players can join a single game session
 
-Persistent Coin Economy: Players start with 40 coins and can win or lose based on their Blackjack skills
+-Persistent Coin Economy: Players start with 40 coins and can win or lose based on their Blackjack skills
 
-Dynamic Betting System: Place bets, track your balance, and compete with friends
+-Dynamic Betting System: Place bets, track your balance, and compete with friends
 
-Personalized Game Interactions: Playful Gojo-themed messages add humor to the gaming experience
+-Personalized Game Interactions: Playful Gojo-themed messages add humor to the gaming experience
 
 ## Manual Setup
 
