@@ -1,14 +1,12 @@
 [Unit]
-Description=Multiplayer Blackjack Bot
+Description=Blackjackbot Service
 After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/java -cp ".:/home/ec2-user/libs/*" src/main/java/edu/moravian/MultiplayerBlackjackBot.java
-
+ExecStart=/usr/bin/java -jar target/dbot-1.0-SNAPSHOT.jar
 Restart=always
 User=ec2-user
-WorkingDirectory=/home/ec2-user/
 
 [Install]
 WantedBy=multi-user.target
