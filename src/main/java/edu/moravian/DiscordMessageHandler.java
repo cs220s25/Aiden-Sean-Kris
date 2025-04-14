@@ -44,8 +44,6 @@ public class DiscordMessageHandler {
         String channelId = event.getChannel().getId();
         String username = event.getAuthor().getName();
 
-        if (!event.getChannel().getName().equals("aiden-channel")) return;
-
         switch (message) {
             case "!play","p" -> startGame(channelId, username, event);
             case "!join","j" -> joinGame(channelId, username, event);
