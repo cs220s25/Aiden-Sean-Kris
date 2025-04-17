@@ -26,9 +26,9 @@ ssh -i /path/to/labuser.pem ec2-user@your-ec2-public-ip
 
 
 Install system dependencies
-1.```sudo yum install -y git```
-2.```sudo yum install -y maven-amazon-corretto21```
-3.```sudo dnf install -y mariadb105 mariadb105-server expect```
+1. ```sudo yum install -y git```
+2. ```sudo yum install -y maven-amazon-corretto21```
+3. ```sudo dnf install -y mariadb105 mariadb105-server expect```
 
 Start and enable MariaDB
 sudo systemctl start mariadb
