@@ -63,9 +63,9 @@ Install and start the systemd service
 ## Usage
 Getting Started
 
-Type gojo in the designated Discord channel to see available commands
-Use !play to start a new game
-Invite friends to join with !join
+Type gojo in the designated Discord channel to see available commands  
+Use !play to start a new game  
+Invite friends to join with !join  
 
 ## Key Commands
 
@@ -78,25 +78,25 @@ Invite friends to join with !join
 
 Game Mechanics
 
-Start with 40 coins>
-Bet before playing
-Play against the dealer
-Win or lose coins based on your hand
-Blackjack pays 1.5x the bet
-Bust (over 21) results in losing your bet
+Start with 40 coins>  
+Bet before playing  
+Play against the dealer  
+Win or lose coins based on your hand  
+Blackjack pays 1.5x the bet  
+Bust (over 21) results in losing your bet  
 
 ## System Diagram
 ![DiscordUML.png](src/main/java/DiscordUML.png)
 
-The system diagram illustrates the key components of the Blackjack bot:
+The system diagram illustrates the key components of the Blackjack bot:  
 
-Discord Message Handler: Processes user commands and coordinates game flow
+Discord Message Handler: Processes user commands and coordinates game flow  
 
-Game Session: Manages the state of an individual game
+Game Session: Manages the state of an individual game  
 
-Database Manager: Handles player data and currency tracking
+Database Manager: Handles player data and currency tracking  
 
-Player: Represents individual player state and actions
+Player: Represents individual player state and actions  
 
-DiscordMessageManager: Handles card drawing and shuffling while also initializing the bot
+DiscordMessageManager: Handles card drawing and shuffling while also initializing the bot  
 
