@@ -51,17 +51,16 @@ Change Directory
 - ```Type in “DISCORD_TOKEN=YOUR_DISCORD_TOKEN_HERE”```
 
 Build the project
-mvn clean package
+- ```enter the following command into the terminal: mvn clean package```
 
 Install and start the systemd service
-sudo cp Blackjackbot.service /etc/systemd/system
-sudo systemctl daemon-reload
-sudo systemctl enable Blackjackbot.service
-sudo systemctl start Blackjackbot.service
+- ```sudo cp Blackjackbot.service /etc/systemd/system```
+- ```sudo systemctl daemon-reload```
+- ```sudo systemctl enable Blackjackbot.service```
+- ```sudo systemctl start Blackjackbot.service```
 
 
 ## Usage
-Usage
 Getting Started
 
 Type gojo in the designated Discord channel to see available commands
