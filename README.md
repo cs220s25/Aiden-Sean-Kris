@@ -67,9 +67,9 @@ Type gojo in the designated Discord channel to see available commands
 Use !play to start a new game
 Invite friends to join with !join
 
-Key Commands
+## Key Commands
 
-!play: Start a new game
+_ !play: Start a new game
 !join: Join an existing game
 !bet [amount]: Place a bet (e.g., !bet 10)
 !hit: Draw another card
