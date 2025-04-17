@@ -69,12 +69,12 @@ Invite friends to join with !join
 
 ## Key Commands
 
-_ !play: Start a new game
-!join: Join an existing game
-!bet [amount]: Place a bet (e.g., !bet 10)
-!hit: Draw another card
-!stand: Keep current hand
-!balance: Check your coin balance
+!play: Start a new game  
+!join: Join an existing game  
+!bet [amount]: Place a bet (e.g., !bet 10)  
+!hit: Draw another card  
+!stand: Keep current hand  
+!balance: Check your coin balance  
 
 Game Mechanics
 
