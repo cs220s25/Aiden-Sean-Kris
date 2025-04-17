@@ -22,7 +22,7 @@ Gojo's Ultimate Blackjack Arena is a multiplayer Blackjack Discord bot that has 
 ## Manual Setup
 
 Create EC2 Instance and SSH into it
-ssh -i /path/to/labuser.pem ec2-user@your-ec2-public-ip
+- ```ssh -i /path/to/labuser.pem ec2-user@your-ec2-public-ip```
 
 
 Install system dependencies
@@ -40,15 +40,15 @@ Start and enable MariaDB
 3. When it asks you to put in a new password type in desired passsword.
 
 
-Clone project
-git clone https://github.com/cs220s25/Aiden-Sean-Kris.git
+Clone project in the instance
+- ```git clone https://github.com/cs220s25/Aiden-Sean-Kris.git```
 
 Change Directory 
-cd Aiden-Sean-Kris
+- ```cd Aiden-Sean-Kris```
 
-Create the .env file with your Discord token
-nano .env 
-Type in “DISCORD_TOKEN=YOUR_DISCORD_TOKEN_HERE”
+## Create the .env file with your Discord token
+- ```nano .env``` 
+- ```Type in “DISCORD_TOKEN=YOUR_DISCORD_TOKEN_HERE”```
 
 Build the project
 mvn clean package
