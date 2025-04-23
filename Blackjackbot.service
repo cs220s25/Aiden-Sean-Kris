@@ -3,12 +3,10 @@ Description=Blackjackbot Service
 After=network.target
 
 [Service]
-Type=simple
 User=ec2-user
-WorkingDirectory=/home/ec2-user/Aiden-Sean-Kris
-ExecStart=/usr/bin/java -jar /home/ec2-user/Aiden-Sean-Kris/target/dbot-1.0-SNAPSHOT.jar
+ExecStart=/usr/bin/java -jar /Aiden-Sean-Kris/target/dbot-1.0-SNAPSHOT-shaded.jar
+WorkingDirectory=/Aiden-Sean-Kris/target
 Restart=always
-RestartSec=5
 
 [Install]
 WantedBy=multi-user.target
