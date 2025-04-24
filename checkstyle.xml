@@ -4,7 +4,7 @@
     "https://checkstyle.sourceforge.io/dtds/configuration_1_3.dtd">
 <module name="Checker">
     <module name="TreeWalker">
-        <!-- Disable Javadoc checks -->
+        <!-- Disable Javadoc checks under TreeWalker -->
         <module name="JavadocType">
             <property name="severity" value="ignore"/>
         </module>
@@ -12,9 +12,6 @@
             <property name="severity" value="ignore"/>
         </module>
         <module name="JavadocVariable">
-            <property name="severity" value="ignore"/>
-        </module>
-        <module name="JavadocPackage">
             <property name="severity" value="ignore"/>
         </module>
 
@@ -66,5 +63,10 @@
         <module name="AvoidStarImport">
             <property name="severity" value="ignore"/>
         </module>
+    </module>
+
+    <!-- Place JavadocPackage directly under Checker -->
+    <module name="JavadocPackage">
+        <property name="severity" value="ignore"/>
     </module>
 </module>
