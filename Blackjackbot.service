@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 User=ec2-user
-ExecStart=/usr/bin/java -jar /Aiden-Sean-Kris/target/dbot-1.0-SNAPSHOT-shaded.jar
+ExecStart=/usr/bin/java -jar /Aiden-Sean-Kris/target/dbot-1.0-SNAPSHOT.jar
 WorkingDirectory=/Aiden-Sean-Kris/target
 Restart=always
 
