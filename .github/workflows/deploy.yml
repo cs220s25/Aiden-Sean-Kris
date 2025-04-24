@@ -5,7 +5,7 @@ on:
 
 jobs:
   deploy:
-    name: deploy/redeploy (push)
+    name: Redeploy to EC2 # Cleaner job name
     runs-on: ubuntu-latest
 
     steps:
