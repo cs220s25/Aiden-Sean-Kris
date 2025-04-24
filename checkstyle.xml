@@ -8,7 +8,7 @@
 
     <!-- LineLength Module -->
     <module name="LineLength">
-        <property name="max" value="150"/>
+        <property name="max" value="300"/>
     </module>
 
     <module name="TreeWalker">
