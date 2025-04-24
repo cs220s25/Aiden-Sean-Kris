@@ -22,7 +22,7 @@ Gojo's Ultimate Blackjack Arena is a multiplayer Blackjack Discord bot that has 
 
 ## Setup Processes
 
-## 🚀 EC2 Deployment Process for Blackjackbot 🚀 
+# 🚀 EC2 Deployment Process for Blackjackbot 🚀 
 Launch an EC2 Instance  
 Go to the AWS EC2 Dashboard  
 Select vockey for your Key Pair Name (you’ll need this for SSH access)  
