@@ -6,7 +6,15 @@
 <module name="Checker">
     <property name="severity" value="error"/>
 
-    <!-- LineLength Module -->
+    <!-- Correct Placement of LineLength -->
     <module name="LineLength">
         <property name="max" value="225"/>
     </module>
+
+    <!-- TreeWalker Module -->
+    <module name="TreeWalker">
+        <module name="MethodLength">
+            <property name="max" value="60"/>
+        </module>
+    </module>
+</module>
