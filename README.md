@@ -5,7 +5,6 @@
 [![Testing](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/maven-build.yml/badge.svg)](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/maven-build.yml)
 [![Deploy](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/deploy.yml/badge.svg)](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/deploy.yml)
 [![Style Checker](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/style-checker.yml/badge.svg)](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/style-checker.yml)
-[![Test Workflow](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/test.yml/badge.svg)](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/test.yml)
 
 # Project Description
 
