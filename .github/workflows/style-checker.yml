@@ -20,5 +20,20 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
+      - name: Cache Maven dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Ensure custom checkstyle.xml is used
+        run: |
+          if [ ! -f checkstyle.xml ]; then
+            echo "Error: checkstyle.xml not found in the repository root."
+            exit 1
+          fi
+
       - name: Run Maven Checkstyle
-        run: mvn checkstyle:check
+        run: mvn checkstyle:check -Dcheckstyle.config.location=checkstyle.xml
