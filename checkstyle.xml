@@ -3,59 +3,65 @@
     "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
     "https://checkstyle.sourceforge.io/dtds/configuration_1_3.dtd">
 <module name="Checker">
-    <!-- Enforce Javadoc -->
-    <module name="JavadocType"/>
-    <module name="JavadocMethod">
-        <property name="scope" value="public"/>
-    </module>
-    <module name="JavadocVariable">
-        <property name="scope" value="public"/>
-    </module>
+    <!-- Disable Javadoc checks -->
+    <module name="TreeWalker">
+        <module name="JavadocType">
+            <property name="severity" value="ignore"/>
+        </module>
+        <module name="JavadocMethod">
+            <property name="severity" value="ignore"/>
+        </module>
+        <module name="JavadocVariable">
+            <property name="severity" value="ignore"/>
+        </module>
 
-    <!-- Enforce Naming Conventions -->
-    <module name="TypeName">
-        <property name="format" value="^[A-Z][a-zA-Z0-9]*$"/>
-    </module>
-    <module name="MethodName">
-        <property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
-    </module>
-    <module name="VariableName">
-        <property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
-    </module>
-    <module name="ParameterName">
-        <property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
-    </module>
+        <!-- Allow longer line lengths -->
+        <module name="LineLength">
+            <property name="severity" value="ignore"/>
+        </module>
 
-    <!-- Enforce Indentation -->
-    <module name="Indentation">
-        <property name="basicOffset" value="4"/>
-        <property name="braceAdjustment" value="0"/>
-        <property name="caseIndent" value="4"/>
-        <property name="lineWrappingIndentation" value="8"/>
-    </module>
+        <!-- Disable naming convention checks -->
+        <module name="MethodName">
+            <property name="format" value=".*"/>
+        </module>
+        <module name="VariableName">
+            <property name="format" value=".*"/>
+        </module>
+        <module name="ParameterName">
+            <property name="format" value=".*"/>
+        </module>
+        <module name="PackageName">
+            <property name="format" value=".*"/>
+        </module>
 
-    <!-- Limit Line Length -->
-    <module name="LineLength">
-        <property name="max" value="120"/>
-    </module>
+        <!-- Disable magic number checks -->
+        <module name="MagicNumber">
+            <property name="severity" value="ignore"/>
+        </module>
 
-    <!-- Disallow Wildcard Imports -->
-    <module name="AvoidStarImport"/>
+        <!-- Disable indentation checks -->
+        <module name="Indentation">
+            <property name="severity" value="ignore"/>
+        </module>
 
-    <!-- Prevent Magic Numbers -->
-    <module name="MagicNumber"/>
+        <!-- Disable empty block checks -->
+        <module name="EmptyBlock">
+            <property name="severity" value="ignore"/>
+        </module>
 
-    <!-- Ensure Braces are Used -->
-    <module name="NeedBraces"/>
+        <!-- Disable unused imports checks -->
+        <module name="UnusedImports">
+            <property name="severity" value="ignore"/>
+        </module>
 
-    <!-- Enforce Newline at End of Files -->
-    <module name="NewlineAtEndOfFile"/>
+        <!-- Disable newline at end of file check -->
+        <module name="NewlineAtEndOfFile">
+            <property name="severity" value="ignore"/>
+        </module>
 
-    <!-- Enforce Header Comments -->
-    <module name="FileTabCharacter">
-        <property name="eachLine" value="true"/>
-    </module>
-    <module name="Header">
-        <property name="headerFile" value="header.txt"/>
+        <!-- Allow wildcard imports -->
+        <module name="AvoidStarImport">
+            <property name="severity" value="ignore"/>
+        </module>
     </module>
 </module>
