@@ -5,7 +5,7 @@
 [![Testing](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/maven-build.yml/badge.svg)](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/maven-build.yml)
 [![Deploy](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/deploy.yml/badge.svg)](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/deploy.yml)
 
-## Project Description
+# Project Description
 
 Gojo's Ultimate Blackjack Arena 
 Project Description:
@@ -20,9 +20,9 @@ Gojo's Ultimate Blackjack Arena is a multiplayer Blackjack Discord bot that has 
 
 -Personalized Game Interactions: Playful Gojo-themed messages add humor to the gaming experience
 
-## Setup Processes
+# Setup Processes
 
-# 🚀 EC2 Deployment Process for Blackjackbot 🚀 
+## 🚀 EC2 Deployment Process for Blackjackbot 🚀 
 Launch an EC2 Instance  
 Go to the AWS EC2 Dashboard  
 Select vockey for your Key Pair Name (you’ll need this for SSH access)  
