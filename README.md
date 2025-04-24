@@ -33,7 +33,7 @@ Then press Advanced Details and scroll all the way down where it says User Data 
 Copy and Paste or download userdata.sh and choose that file to upload the data into the field  
 Once you do that look at echo "DISCORD_TOKEN=YOUR_DISCORD_TOKEN_HERE" > .env  
 You want to end up putting your discord token in there where it states YOUR_DISCORD_TOKEN_HERE  
-Now we can press Launch Instance
+Now we can press Launch Instance  
 `NOTE` this might take 2 minutes or so to boot up completely.  
 
 
