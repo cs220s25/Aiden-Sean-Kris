@@ -5,8 +5,6 @@
 [![Testing](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/maven-build.yml/badge.svg)](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/maven-build.yml)
 [![Deploy](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/deploy.yml/badge.svg)](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/deploy.yml)
 
-
-
 ## Project Description
 
 Gojo's Ultimate Blackjack Arena 
@@ -24,6 +22,19 @@ Gojo's Ultimate Blackjack Arena is a multiplayer Blackjack Discord bot that has 
 
 ## Setup Process 
 
+🚀 EC2 Deployment Process for Blackjackbot  
+Launch an EC2 Instance  
+Go to the AWS EC2 Dashboard  
+Select vockey for your Key Pair Name (you’ll need this for SSH access)  
+In Security Groups, make sure to allow:  
+Port 22 `(SSH)`  
+Port 80 `(HTTP)`  
+Then press Advanced Details and scroll all the way down where it says User Data - Optional  
+Copy and Paste or download userdata.sh and choose that file to upload the data into the field  
+Once you do that look at echo "DISCORD_TOKEN=YOUR_DISCORD_TOKEN_HERE" > .env  
+You want to end up putting your discord token in there where it states YOUR_DISCORD_TOKEN_HERE  
+Now we can press Launch Instance
+`NOTE` this might take 2 minutes or so to boot up completely.  
 
 
 ## Usage
