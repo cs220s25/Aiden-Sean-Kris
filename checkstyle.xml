@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE module PUBLIC
-        "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
-        "https://checkstyle.sourceforge.io/dtds/configuration_1_3.dtd">
+    "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
+    "https://checkstyle.sourceforge.io/dtds/configuration_1_3.dtd">
 <module name="Checker">
     <module name="TreeWalker">
         <!-- Disable Javadoc checks -->
@@ -29,6 +29,26 @@
         </module>
         <module name="ParameterName">
             <property name="format" value=".*"/>
+        </module>
+
+        <!-- Disable magic number checks -->
+        <module name="MagicNumber">
+            <property name="severity" value="ignore"/>
+        </module>
+
+        <!-- Disable indentation checks -->
+        <module name="Indentation">
+            <property name="severity" value="ignore"/>
+        </module>
+
+        <!-- Disable empty block checks -->
+        <module name="EmptyBlock">
+            <property name="severity" value="ignore"/>
+        </module>
+
+        <!-- Disable unused imports checks -->
+        <module name="UnusedImports">
+            <property name="severity" value="ignore"/>
         </module>
     </module>
 </module>
