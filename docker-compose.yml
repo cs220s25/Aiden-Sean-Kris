@@ -1,9 +1,9 @@
 version: '3.8'
 
 services:
-  discord-bot:
+  gojo-bot:
     build: .
-    container_name: discord-bot
+    container_name: gojo-bot
     restart: always
     environment:
       - DISCORD_TOKEN=${DISCORD_TOKEN}
