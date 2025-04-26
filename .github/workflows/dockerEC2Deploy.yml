@@ -16,4 +16,5 @@ jobs:
           key: ${{ secrets.LABSUSERPEM }}
           script: |
             cd /home/ec2-user/Aiden-Sean-Kris/ec2Docker
-            ./redeploy.sh
+            sudo chmod +x redeploy.sh 
+            sudo ./redeploy.sh
