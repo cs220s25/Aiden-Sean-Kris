@@ -1,5 +1,6 @@
 #!/bin/bash
 
+sudo systemctl stop Blackjackbot.service
 sudo git pull origin main
-mvn clean package -DskipTests
-sudo systemctl restart Blackjackbot.service
+sudo mvn clean package
+sudo systemctl start Blackjackbot.service
