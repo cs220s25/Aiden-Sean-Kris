@@ -16,5 +16,5 @@ jobs:
           user: ec2-user
           key: ${{ secrets.LABSUSERPEM }}
           script: |
-            cd /Aiden-Sean-Kris
+            cd /home/ec2-user/Aiden-Sean-Kris
             ./redeploy.sh
