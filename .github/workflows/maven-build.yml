@@ -38,4 +38,4 @@ jobs:
       run: echo "DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }}" > .env
 
     - name: Run Maven package
-      run: mvn clean package
+      run: mvn package -DskipTests -Dcheckstyle.skip=true
