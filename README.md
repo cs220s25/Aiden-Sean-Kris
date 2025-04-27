@@ -4,6 +4,14 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/cs220s25/Aiden-Sean-Kris?style=flat-square)
 ![GitHub forks](https://img.shields.io/github/forks/cs220s25/Aiden-Sean-Kris?style=flat-square)
 
+## 📋 Table of Contents
+- [CI/CD Status](#-cicd-status)
+- [Project Overview](#-project-overview)
+- [Setup Instructions](#️-setup-instructions)
+- [How to Play](#-how-to-play)
+- [Game Mechanics](#-game-mechanics)
+- [System Architecture](#-system-architecture)
+
 ## 📈 CI/CD Status
 
 | Workflow | Status |
