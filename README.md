@@ -1,9 +1,5 @@
 # 🎲 Gojo's Ultimate Blackjack Arena
 
-![License](https://img.shields.io/github/license/cs220s25/Aiden-Sean-Kris?style=flat-square)
-![GitHub Repo stars](https://img.shields.io/github/stars/cs220s25/Aiden-Sean-Kris?style=flat-square)
-![GitHub forks](https://img.shields.io/github/forks/cs220s25/Aiden-Sean-Kris?style=flat-square)
-
 ## 📋 Table of Contents
 - [CI/CD Status](#-cicd-status)
 - [Project Overview](#-project-overview)
