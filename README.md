@@ -1,81 +1,85 @@
-## ActionsExploration
+# 🎲 Gojo's Ultimate Blackjack Arena 🎲
 
-### CI/CD Status
+## 📋 Table of Contents
+- [CI/CD Status](#-cicd-status)
+- [Project Overview](#-project-overview)
+- [Setup Instructions](#️-setup-instructions)
+- [How to Play](#-how-to-play)
+- [Game Mechanics](#-game-mechanics)
+- [System Architecture](#-system-architecture)
 
-[![Testing](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/maven-build.yml/badge.svg)](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/maven-build.yml)
-[![Deploy](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/deploy.yml/badge.svg)](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/deploy.yml)
-[![Style Checker](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/style-checker.yml/badge.svg)](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/style-checker.yml)
-[![Deploy Docker on AWS](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/dockerEC2Deploy.yml/badge.svg)](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/dockerEC2Deploy.yml)
+## 📈 CI/CD Status
 
-# Project Description
+| Workflow | Status |
+|:---|:---|
+| Maven Build | [![Testing](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/maven-build.yml/badge.svg)](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/maven-build.yml) |
+| Deploy | [![Deploy](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/deploy.yml/badge.svg)](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/deploy.yml) |
+| Style Checker | [![Style Checker](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/style-checker.yml/badge.svg)](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/style-checker.yml) |
+| Docker Deployment (AWS) | [![Deploy Docker on AWS](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/dockerEC2Deploy.yml/badge.svg)](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/dockerEC2Deploy.yml) |
 
-Gojo's Ultimate Blackjack Arena 
-Project Description:
+---
 
-Gojo's Ultimate Blackjack Arena is a multiplayer Blackjack Discord bot that has all the same functionalities of a regular blackjack game. Inspired by the charismatic Jujutsu Kaisen character Gojo Satoru, this bot offers an engaging, interactive Blackjack experience with unique features:
+## 🎮 Project Overview
 
--Multiplayer Gameplay: Up to 8 players can join a single game session
+**Gojo's Ultimate Blackjack Arena** brings the excitement of Blackjack into Discord servers, enhanced with Gojo Satoru’s flair!
 
--Persistent Coin Economy: Players start with 40 coins and can win or lose based on their Blackjack skills
+### ✨ Features
+- **Multiplayer**: Up to 8 players.
+- **Persistent Economy**: Start with 40 coins and build your fortune.
+- **Dynamic Betting**: Bet smart and dominate.
+- **Gojo-themed Messages**: Hilarious and stylish interactions.
 
--Dynamic Betting System: Place bets, track your balance, and compete with friends
+---
 
--Personalized Game Interactions: Playful Gojo-themed messages add humor to the gaming experience
+## ⚙️ ️Setup Instructions
 
-# Setup Processes
+### 🚀 EC2 Deployment Steps
+1. **Launch an EC2 Instance** via AWS EC2 Dashboard.
+2. **Key Pair**: Select `vockey` (for SSH).
+3. **Security Group Rules**:
+   - Allow **Port 22 (SSH)** and **Port 80 (HTTP)**.
+4. **Advanced Details**:
+   - Add user data from `userdata.sh`.
+   - Edit your `.env`:
+     ```bash
+     echo "DISCORD_TOKEN=YOUR_DISCORD_TOKEN_HERE" > .env
+     ```
+5. **Launch Instance** — wait 2 minutes for the server to initialize.
 
-## 🚀 EC2 Deployment Process for Blackjackbot 🚀 
-Launch an EC2 Instance  
-Go to the AWS EC2 Dashboard  
-Select vockey for your Key Pair Name (you’ll need this for SSH access)  
-In Security Groups, make sure to allow:  
-Port 22 `(SSH)`  
-Port 80 `(HTTP)`  
-Then press Advanced Details and scroll all the way down where it says User Data - Optional  
-Copy and Paste or download userdata.sh and choose that file to upload the data into the field  
-Once you do that look at echo "DISCORD_TOKEN=YOUR_DISCORD_TOKEN_HERE" > .env  
-You want to end up putting your discord token in there where it states YOUR_DISCORD_TOKEN_HERE  
-Now we can press Launch Instance  
-`NOTE` this might take 2 minutes or so to boot up completely.  
+---
 
+## 🕹️ How to Play
 
-## Usage
-Getting Started
+### Commands
+| Command | Description |
+|:---|:---|
+| `gojo` | List available bot commands |
+| `!play` | Start a new Blackjack game |
+| `!join` | Join an ongoing session |
+| `!bet [amount]` | Place your wager |
+| `!hit` | Request another card |
+| `!stand` | Hold your hand |
+| `!balance` | Check your current coins |
 
-Type gojo in the designated Discord channel to see available commands  
-Use !play to start a new game  
-Invite friends to join with !join  
+---
 
-## Key Commands
+## 🧩 Game Mechanics
 
-!play: Start a new game  
-!join: Join an existing game  
-!bet [amount]: Place a bet (e.g., !bet 10)  
-!hit: Draw another card  
-!stand: Keep current hand  
-!balance: Check your coin balance  
+- Start with **40 coins**.
+- Place bets each round.
+- Play against the dealer (Gojo!).
+- **Blackjack** pays **1.5x** your bet.
+- Bust (over 21) and lose your bet.
 
-Game Mechanics
+---
 
-Start with 40 coins>  
-Bet before playing  
-Play against the dealer  
-Win or lose coins based on your hand  
-Blackjack pays 1.5x the bet  
-Bust (over 21) results in losing your bet  
+## 🗺️ System Architecture
 
-## System Diagram
-![DiscordUML.png](src/main/java/DiscordUML.png)
+![System Diagram](src/main/java/DiscordUML.png)
 
-The system diagram illustrates the key components of the Blackjack bot:  
-
-Discord Message Handler: Processes user commands and coordinates game flow  
-
-Game Session: Manages the state of an individual game  
-
-Database Manager: Handles player data and currency tracking  
-
-Player: Represents individual player state and actions  
-
-DiscordMessageManager: Handles card drawing and shuffling while also initializing the bot  
-
+### Key Components
+- **Discord Message Handler**: Captures and processes user inputs.
+- **Game Session Manager**: Tracks game states.
+- **Database Manager**: Saves player data and balances.
+- **Player Entity**: Tracks hands, bets, and balances.
+- **Discord Message Manager**: Handles card operations and bot startup.
