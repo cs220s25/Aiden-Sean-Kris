@@ -1,4 +1,4 @@
-   # 🎲 Gojo's Ultimate Blackjack Arena 🎲
+# 🎲 Gojo's Ultimate Blackjack Arena 🎲
 
 ## 📋 Table of Contents
 - [CI/CD Status](#-cicd-status)
