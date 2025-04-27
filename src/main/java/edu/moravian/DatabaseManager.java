@@ -15,7 +15,7 @@ import java.util.Map;
 
 public class DatabaseManager {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/blackjack";
+    private static final String URL = "jdbc:mysql://mysql:3306/blackjack";
     private static final String USER = "root";
     private static final String PASSWORD = "rootpass";
 
@@ -38,7 +38,7 @@ public class DatabaseManager {
      * @return true if successful, false if an error occurred
      */
     public boolean createDatabaseIfNotExists() {
-        String baseUrl = "jdbc:mysql://localhost:3306/";
+        String baseUrl = "jdbc:mysql://mysql:3306/";
 
         try (Connection conn = DriverManager.getConnection(baseUrl, USER, PASSWORD)) {
             // Check if database exists

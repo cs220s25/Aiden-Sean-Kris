@@ -1,11 +1,43 @@
 version: '3.8'
 
 services:
-  gojo-bot:
-    build: .
-    container_name: gojo-bot
-    restart: always
+  mysql:
+    image: mysql:8.0
     environment:
-      - DISCORD_TOKEN=${DISCORD_TOKEN}
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: blackjack
+      MYSQL_USER: appuser
+      MYSQL_PASSWORD: apppass
+    ports:
+      - "3307:3306"
+    networks:
+      - discord-network
     volumes:
-      - ./.env:/app/.env
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 10s
+      retries: 10
+    command: --default-authentication-plugin=mysql_native_password
+
+  bot:
+    build: .
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_NAME=blackjack
+      - DB_USER=appuser
+      - DB_PASSWORD=apppass
+    networks:
+      - discord-network
+
+networks:
+  discord-network:
+    external: true
+
+volumes:
+  mysql-data:
