@@ -5,6 +5,7 @@
 [![Testing](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/maven-build.yml/badge.svg)](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/maven-build.yml)
 [![Deploy](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/deploy.yml/badge.svg)](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/deploy.yml)
 [![Style Checker](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/style-checker.yml/badge.svg)](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/style-checker.yml)
+[![Deploy Docker on AWS](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/dockerEC2Deploy.yml/badge.svg)](https://github.com/cs220s25/Aiden-Sean-Kris/actions/workflows/dockerEC2Deploy.yml)
 
 # Project Description
 
