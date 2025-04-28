@@ -36,16 +36,21 @@
 ### 🚀 EC2 Deployment Steps
 1. **Launch an EC2 Instance** via AWS EC2 Dashboard.
 2. **Key Pair**: Select `vockey` (for SSH).
+![Vockey](Screenshots/vockey.png)
 3. **Security Group Rules**:
    - Allow **Port 22 (SSH)** and **Port 80 (HTTP)**.
+![Ports](Screenshots/Ports.png)
 4. **Advanced Details**:
    - Add user data from `userdata.sh`.
    - Edit your `.env`:
      ```bash
      echo "DISCORD_TOKEN=YOUR_DISCORD_TOKEN_HERE" > .env
      ```
+![Advanced Details](Screenshots/AdvancedDetails.png)
 5. **Launch Instance** — wait 2 minutes for the server to initialize.
 
+###  🐳 EC2 Docker Deployment Steps
+1. 
 ---
 
 ## 🕹️ How to Play
