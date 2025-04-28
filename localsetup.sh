@@ -1,15 +1,11 @@
 #!/bin/bash
 
-# Install SQL (MariaDB Example)
-sudo apt update
-sudo apt install -y mariadb-server
-sudo systemctl start mariadb
-sudo systemctl enable mariadb
-sudo mysql_secure_installation
-
-# Clone the Repository
+# Clone the repo
 git clone https://github.com/cs220s25/Aiden-Sean-Kris.git
 cd Aiden-Sean-Kris
+
+# Create the .env file (replace YOUR_DISCORD_TOKEN_HERE)
+echo "DISCORD_TOKEN=YOUR_DISCORD_TOKEN_HERE" > .env
 
 # Build the Project
 mvn clean package
