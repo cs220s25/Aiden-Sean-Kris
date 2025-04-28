@@ -13,5 +13,5 @@ sudo chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
 
 # Connect MYSQL & Bot Via Docker Network
 sudo docker network create discord-network
-sudo docker-compose build
-sudo docker-compose up -d
+sudo docker compose build
+sudo docker compose up -d
