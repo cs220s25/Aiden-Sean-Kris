@@ -34,10 +34,6 @@
 
 ---
 
-Here’s a smoother version of your template with better readability and formatting:
-
----
-
 # ⚙️ Setup Instructions  
 ### 🎯 How to Create and Set Up a New Discord Bot 🎯  
 
