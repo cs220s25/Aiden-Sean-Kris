@@ -4,6 +4,9 @@
 - [CI/CD Status](#-cicd-status)
 - [Project Overview](#-project-overview)
 - [Setup Instructions](#️-setup-instructions)
+   - [Set Gojo Bot Locally](#-how-to-create-and-set-up-a-new-discord-bot-)
+   - [EC2 Deployment Steps](#-ec2-deployment-steps)
+   - [EC2 Docker Deployment Steps](#-ec2-docker-deployment-steps)
 - [How to Play](#-how-to-play)
 - [Game Mechanics](#-game-mechanics)
 - [System Architecture](#-system-architecture)
@@ -90,12 +93,47 @@ Here’s a smoother version of your template with better readability and formatt
 5. **Launch Instance** — wait 2 minutes for the server to initialize.
 
 ###  🐳 EC2 Docker Deployment Steps
-1. 
+**While in The AWS EC2**
+
+**1. Type in**
+```bash
+sudo systemctl status Blackjackbot.service
+```
+**1a. If Bot is stopped and systemctl shows this**
+![NotRunning](Screenshots/BotNotRunning.png)
+**Then You're Good! ✅**
+
+**Now Run**
+```bash
+cd Aiden-Sean-Kris/
+sudo sh ec2Docker/installDocker.sh
+```
+
+**1b. If bot is running and systemctl shows this**
+![BotRunning](Screenshots/BotRunning.png)
+
+* **Then run this**
+```bash
+sudo systemctl stop Blackjackbot.service
+```
+**Now systemctl should say this**
+![NotRunning](Screenshots/BotNotRunning.png)
+
+**Now You're Good! ✅**
+
+**Now Run**
+```bash
+cd Aiden-Sean-Kris/
+sudo sh ec2Docker/installDocker.sh
+```
+
+### Now Gojo is Ready to Run! 🔥
+![DockerRunning](Screenshots/GojoWithDocker.png)
+
 ---
 
-## 🕹️ How to Play
-
-### Commands
+# 🕹️ How to Play
+## Commands
 | Command | Description |
 |:---|:---|
 | `gojo` | List available bot commands |
