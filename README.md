@@ -3,8 +3,8 @@
 ## 📋 Table of Contents
 - [CI/CD Status](#-cicd-status)
 - [Project Overview](#-project-overview)
-- [Setup Instructions](#️-setup-instructions)
-- [How to Play](#-how-to-play)
+- [Setup Instructions](#️setup-instructions)
+- [How to Play](#how-to-play)
 - [Game Mechanics](#-game-mechanics)
 - [System Architecture](#-system-architecture)
 
