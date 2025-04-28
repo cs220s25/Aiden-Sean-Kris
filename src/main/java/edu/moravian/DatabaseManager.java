@@ -15,72 +15,86 @@ import java.util.Map;
 
 public class DatabaseManager {
 
-    private static final String URL = "jdbc:mysql://mysql:3306/blackjack";
-    private static final String USER = "root";
-    private static final String PASSWORD = "rootpass";
-
     private Connection connection;
+    private String URL;
+    private String USER;
+    private String PASSWORD;
 
     /**
      * Constructor to initialize the database connection.
      */
     public DatabaseManager() {
+        // Read from environment variables with defaults
+        String dbHost = System.getenv("DB_HOST") != null ? System.getenv("DB_HOST") : "localhost";
+        String dbPort = System.getenv("DB_PORT") != null ? System.getenv("DB_PORT") : "3306";
+        String dbName = System.getenv("DB_NAME") != null ? System.getenv("DB_NAME") : "blackjack";
+        USER = System.getenv("DB_USER") != null ? System.getenv("DB_USER") : "root";
+        PASSWORD = System.getenv("DB_PASSWORD") != null ? System.getenv("DB_PASSWORD") : "rootpass";
+        
+        URL = "jdbc:mysql://" + dbHost + ":" + dbPort + "/" + dbName;
+        
         try {
             // Connect to MySQL database
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
-            System.out.println("Connected to MySQL database!");
+            System.out.println("Connected to MySQL database at " + URL);
         } catch (SQLException e) {
+            System.err.println("Failed to connect to database at " + URL);
             e.printStackTrace();
         }
     }
+    
     /**
-     * Creates the blackjack database and required tables if they don't already exist.
-     * @return true if successful, false if an error occurred
-     */
-    public boolean createDatabaseIfNotExists() {
-        String baseUrl = "jdbc:mysql://mysql:3306/";
+ * Creates the blackjack database and required tables if they don't already exist.
+ * @return true if successful, false if an error occurred
+ */
+public boolean createDatabaseIfNotExists() {
+    String dbHost = System.getenv("DB_HOST") != null ? System.getenv("DB_HOST") : "localhost";
+    String dbPort = System.getenv("DB_PORT") != null ? System.getenv("DB_PORT") : "3306";
+    String baseUrl = "jdbc:mysql://" + dbHost + ":" + dbPort + "/";
+    String dbName = System.getenv("DB_NAME") != null ? System.getenv("DB_NAME") : "blackjack";
 
-        try (Connection conn = DriverManager.getConnection(baseUrl, USER, PASSWORD)) {
-            // Check if database exists
-            boolean databaseExists = false;
-            try (ResultSet resultSet = conn.getMetaData().getCatalogs()) {
-                while (resultSet.next()) {
-                    String databaseName = resultSet.getString(1);
-                    if ("blackjack".equalsIgnoreCase(databaseName)) {
-                        databaseExists = true;
-                        break;
-                    }
+    try (Connection conn = DriverManager.getConnection(baseUrl, USER, PASSWORD)) {
+        // Check if database exists
+        boolean databaseExists = false;
+        try (ResultSet resultSet = conn.getMetaData().getCatalogs()) {
+            while (resultSet.next()) {
+                String databaseName = resultSet.getString(1);
+                if (dbName.equalsIgnoreCase(databaseName)) {
+                    databaseExists = true;
+                    break;
                 }
             }
-
-            // Create database if it doesn't exist
-            if (!databaseExists) {
-                try (Statement stmt = conn.createStatement()) {
-                    stmt.executeUpdate("CREATE DATABASE blackjack");
-                    System.out.println("Database 'blackjack' created successfully.");
-                }
-            }
-
-            // Connect to the blackjack database to create tables if needed
-            try (Connection dbConn = DriverManager.getConnection(URL, USER, PASSWORD);
-                 Statement stmt = dbConn.createStatement()) {
-
-                // Create players table if it doesn't exist
-                String createPlayersTable = "CREATE TABLE IF NOT EXISTS players (" +
-                        "id INT AUTO_INCREMENT PRIMARY KEY," +
-                        "name VARCHAR(255) NOT NULL UNIQUE," +
-                        "balance INT NOT NULL DEFAULT 40)";
-                stmt.executeUpdate(createPlayersTable);
-                System.out.println("Table 'players' checked/created successfully.");
-
-                return true;
-            }
-        } catch (SQLException e) {
-            System.err.println("Error creating database or tables:");
-            e.printStackTrace();
-            return false;
         }
+
+        // Create database if it doesn't exist
+        if (!databaseExists) {
+            try (Statement stmt = conn.createStatement()) {
+                stmt.executeUpdate("CREATE DATABASE " + dbName);
+                System.out.println("Database '" + dbName + "' created successfully.");
+            }
+        }
+
+        // Connect to the blackjack database to create tables if needed
+        try (Connection dbConn = DriverManager.getConnection(URL, USER, PASSWORD);
+             Statement stmt = dbConn.createStatement()) {
+
+            // Create players table if it doesn't exist
+            String createPlayersTable = "CREATE TABLE IF NOT EXISTS players (" +
+                    "id INT AUTO_INCREMENT PRIMARY KEY," +
+                    "name VARCHAR(255) NOT NULL UNIQUE," +
+                    "balance INT NOT NULL DEFAULT 40)";
+            stmt.executeUpdate(createPlayersTable);
+            System.out.println("Table 'players' checked/created successfully.");
+
+            return true;
+        }
+    } catch (SQLException e) {
+        System.err.println("Error creating database or tables:");
+        e.printStackTrace();
+        return false;
     }
+}
+    
     /**
      * Creates a database dump file using JDBC instead of mysqldump
      * @return true if dump was created successfully, false otherwise
