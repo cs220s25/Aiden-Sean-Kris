@@ -33,6 +33,8 @@
 
 ## ⚙️ ️Setup Instructions
 
+Go to the Discord Development Portal https://discord.com/developers/applications 
+
 ### 🚀 EC2 Deployment Steps
 1. **Launch an EC2 Instance** via AWS EC2 Dashboard.
 2. **Key Pair**: Select `vockey` (for SSH).
