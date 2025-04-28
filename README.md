@@ -1,5 +1,5 @@
 # 🎲 Gojo's Ultimate Blackjack Arena 🎲
-[![License: AFL-3.0](https://img.shields.io/badge/License-AFL%203.0-green.svg)](https://opensource.org/licenses/AFL-3.0)
+[![License: AFL-3.0](https://img.shields.io/badge/License-AFL%203.0-purple.svg)](https://opensource.org/licenses/AFL-3.0)
 ## 📋 Table of Contents
 - [CI/CD Status](#-cicd-status)
 - [Project Overview](#-project-overview)
