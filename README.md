@@ -1,7 +1,5 @@
 # 🎲 Gojo's Ultimate Blackjack Arena 🎲
-[![License: AFL-3.0](https://img.shields.io/badge/License-AFL%203.0-blue.svg)](https://opensource.org/licenses/AFL-3.0)
-[![Forks](https://img.shields.io/github/forks/subarashi42/Aiden-Sean-Kris?style=social)](https://github.com/subarashi42/Aiden-Sean-Kris/network/members)
-[![Stars](https://img.shields.io/github/stars/subarashi42/Aiden-Sean-Kris?style=social)](https://github.com/subarashi42/Aiden-Sean-Kris/stargazers)
+[![License: AFL-3.0](https://img.shields.io/badge/License-AFL%203.0-green.svg)](https://opensource.org/licenses/AFL-3.0)
 ## 📋 Table of Contents
 - [CI/CD Status](#-cicd-status)
 - [Project Overview](#-project-overview)
