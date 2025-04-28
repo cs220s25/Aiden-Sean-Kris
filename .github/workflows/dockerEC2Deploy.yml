@@ -16,6 +16,5 @@ jobs:
           key: ${{ secrets.LABSUSERPEM }}
           script: |
             cd /home/ec2-user/Aiden-Sean-Kris/ec2Docker
-            git config --global --add safe.directory /home/ec2-user/Aiden-Sean-Kris
             sudo chmod +x redeploy.sh 
             sudo ./redeploy.sh
