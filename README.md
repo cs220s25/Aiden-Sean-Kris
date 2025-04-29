@@ -68,7 +68,18 @@
 3. Copy the **Generated URL** at the bottom of the page.  
 4. Paste the URL into a new browser tab.  
 5. Choose a server where you want to add the bot.  
-6. Click **Continue** and then **Authorize**.  
+6. Click **Continue** and then **Authorize**.
+
+#### Step 6: Clone Repo/Make .env file
+Copy and paste these steps down below in your terminal
+
+git clone https://github.com/cs220s25/Aiden-Sean-Kris.git
+cd Aiden-Sean-Kris
+nano .env
+
+Once you get into the File named **".env"** paste your private discord token after the **DISORD_TOKEN** section 
+
+DISCORD_TOKEN=YOUR_DISCORD_TOKEN_HERE
 
 ---
 
