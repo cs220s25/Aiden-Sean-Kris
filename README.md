@@ -70,10 +70,6 @@
 5. Choose a server where you want to add the bot.  
 6. Click **Continue** and then **Authorize**.
 
-Here’s a cleaner version of your instructions:
-
----
-
 #### Step 6: Clone the Repository and Create the `.env` File
 
 Follow these steps in your terminal:
