@@ -70,17 +70,29 @@
 5. Choose a server where you want to add the bot.  
 6. Click **Continue** and then **Authorize**.
 
-#### Step 6: Clone Repo/Make .env file
-Copy and paste these steps down below in your terminal
+Here’s a cleaner version of your instructions:
 
+---
+
+#### Step 6: Clone the Repository and Create the `.env` File
+
+Follow these steps in your terminal:
+
+```bash
 git clone https://github.com/cs220s25/Aiden-Sean-Kris.git
 cd Aiden-Sean-Kris
 nano .env
+```
 
-Once you get into the File named **".env"** paste your private discord token after the **DISORD_TOKEN** section 
+Once inside the `.env` file, paste your private Discord token in the following format:
 
+```env
 DISCORD_TOKEN=YOUR_DISCORD_TOKEN_HERE
+```
 
+---
+
+This version is concise and formatted for clarity.
 ---
 
 ### 🚀 EC2 Deployment Steps
