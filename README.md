@@ -40,18 +40,18 @@
 #### Step 1: Access the Discord Developer Portal  
 1. Go to the [Discord Developer Portal](https://discord.com/developers/applications).  
 2. Log in with your Discord account.  
-
+---
 #### Step 2: Create a New Application  
 1. Click the **"New Application"** button (top right).  
 2. Enter a name for your application (e.g., *Gojo*).  
 3. Click **Create**.  
-
+---
 #### Step 3: Add a Bot User  
 1. In the application settings, click **"Bot"** on the left sidebar.  
 2. Press the **"RESET TOKEN"** button to generate a new token.  
    - A warning will pop up: "Your bot will stop working until you update the token in your bot's code."  
    - Click **"Yes, do it!"** to confirm.  
-
+---
 #### Step 4: Configure the Bot Settings  
 1. Copy the **Bot Token** by clicking **Copy**.  
    ⚠️ **Important:** Treat this token like a password. Do not share it publicly.  
@@ -59,7 +59,7 @@
    - **Public Bot**: Slide the toggle to blue.  
    - **Message Content Intent**: Slide the toggle to blue.  
 3. Under **Bot Permissions**, select **Administrator** and click **Save Changes**.  
-
+---
 #### Step 5: Set Up OAuth2  
 1. Click **"OAuth2"** in the left sidebar.  
 2. Under the **OAuth2 URL Generator** section:  
@@ -69,7 +69,7 @@
 4. Paste the URL into a new browser tab.  
 5. Choose a server where you want to add the bot.  
 6. Click **Continue** and then **Authorize**.
-
+---
 #### Step 6: Clone the Repository and Create the `.env` File
 
 Follow these steps in your terminal:
@@ -85,10 +85,6 @@ Once inside the `.env` file, paste your private Discord token in the following f
 ```env
 DISCORD_TOKEN=YOUR_DISCORD_TOKEN_HERE
 ```
-
----
-
-This version is concise and formatted for clarity.
 ---
 
 ### 🚀 EC2 Deployment Steps
