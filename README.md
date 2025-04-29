@@ -86,8 +86,26 @@ Once inside the `.env` file, paste your private Discord token in the following f
 DISCORD_TOKEN=YOUR_DISCORD_TOKEN_HERE
 ```
 ---
+### Locally Deploy Bot With Docker
+1. **Create your .env**
+```bash
+nano .env
+DISCORD_TOKEN=YOUR_DISCORD_TOKEN_HERE;
+```
+2. **Go into Directory**
+```bash
+cd ~/Aiden-Sean-Kris
+```
+3. **Run These Lines**
+```bash
+docker network create discord-network
+docker compose build
+docker compose up -d
+```
 
-### 🚀 EC2 Deployment Steps 🚀
+---
+
+### 🚀 EC2 Deployment Steps (Using Systemd) 🚀
 1. **Launch an EC2 Instance** via AWS EC2 Dashboard.
 2. **Key Pair**: Select `vockey` (for SSH).
 ![Vockey](Screenshots/vockey.png)
